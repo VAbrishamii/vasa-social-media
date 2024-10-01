@@ -1,0 +1,6 @@
+import{b as n,p as l}from"./instance-B_Arlp1z.js";import{c as i}from"./displayPost-BcUR6zLg.js";async function u(){try{const o=await n.profile.allProfiles();if(o.error){console.error(o.error);return}const s=o,e=document.querySelector(".allprofile-container");e.innerHTML="",s.forEach(r=>{const t=document.createElement("div");t.classList.add("allprofile"),t.innerHTML=`
+            <div class="allprofile-header">
+                <img class="profile-avatar" src="${r.avatar.url}" alt="${r.name} avatar">
+                <h2 class="profile-username">${r.name}</h2>
+            </div>
+        `,e.appendChild(t)})}catch(o){console.error("Error fetching profiles:",o.message)}}async function d(){try{const o=await l.post.getPostsFromFollowing(),s=document.querySelector(".userpost-container");s.innerHTML="";for(const e of o){const r=await i(e);r.setAttribute("data-author-id",e.id),s.appendChild(r);const t=r.querySelector(".unfollow-btn");t&&t.addEventListener("click",async()=>{try{await n.profile.unfollow(e.id),c(e.data.author.id)}catch(a){console.error("Error unfollowing user:",a.message)}})}}catch(o){console.error("Error fetching posts from followed users:",o.message)}}function c(o){document.querySelector(".userpost-container").querySelectorAll(`[data-author-id='${o}']`).forEach(r=>r.remove())}export{u as A,d};

@@ -1,0 +1,1 @@
+import{a as m}from"./instance-B_Arlp1z.js";async function r(a){a.preventDefault();const e=document.getElementById("email"),t=document.getElementById("password"),n=e.value,o=t.value;e.value="",t.value="";try{await m.auth.login({email:n,password:o})}catch(s){alert(s.message)}}const l=document.forms.login;l.addEventListener("submit",r);

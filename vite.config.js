@@ -3,8 +3,9 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   appType: "mpa",
-  base: "",
+  base: "/vasa-social-media/",
   build: {
+    outDir: "docs",
     target: "esnext",
     rollupOptions: {
       input: {
