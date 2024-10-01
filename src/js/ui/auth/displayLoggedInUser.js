@@ -37,7 +37,7 @@ export function displayLoggedInUser() {
 
     const menuItems = [
       { name: "My Posts", link: `/profile/?user=${user.name}` },
-      { name: "updat", link: "/profile/update/" },
+      { name: "update", link: "/profile/update/" },
       { name: "Home", link: "/post/feed/" },
       { name: "Logout", link: "#" }
     ];
