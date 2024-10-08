@@ -59,15 +59,24 @@ export function createUpdateProfileForm() {
     const bannerUrl = bannerInput.value.trim();
     const avatarUrl = avatarInput.value.trim();
 
-   
-    const updateData = {
-      bio,
-        banner:  bannerUrl || null,
-        avatar:  avatarUrl || null
-    };
+    const user = JSON.parse(localStorage.getItem("user"));
+
+  const updateData = {
+    bio: bio || user.bio,  
+    banner: bannerUrl || user.banner?.url,  
+    avatar: avatarUrl || user.avatar?.url,  
+  };
+
 
     try {
-      await profileAPI.profile.update(updateData); 
+      const updatedProfile = await profileAPI.profile.update(updateData);
+
+      if (bio) user.bio = bio;
+      if (bannerUrl) user.banner = { url: bannerUrl };
+      if (avatarUrl) user.avatar = { url: avatarUrl };
+  
+      localStorage.setItem("user", JSON.stringify(user));
+
       alert('Your profile has been updated successfully!');
       window.location.href = '/post/feed/'; 
     } catch (error) {

@@ -5,6 +5,7 @@ export function displayLoggedInUser() {
 
 
 
+
   if (user) {
 
     const profileLink = document.createElement("a");
