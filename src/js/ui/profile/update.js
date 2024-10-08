@@ -62,8 +62,8 @@ export function createUpdateProfileForm() {
    
     const updateData = {
       bio,
-        banner: { url: bannerUrl || null},
-        avatar: { url: avatarUrl || null}
+        banner:  bannerUrl || null,
+        avatar:  avatarUrl || null
     };
 
     try {
