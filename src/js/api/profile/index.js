@@ -54,6 +54,7 @@ export default class ProfileAPI {
 
     if (response.ok) {
       const data = await response.json();
+      console.log('data from details', data);
       return data;
     }
 
