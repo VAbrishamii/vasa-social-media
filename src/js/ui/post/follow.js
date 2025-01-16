@@ -1,5 +1,8 @@
 import { profileAPI } from '../../api/instance';
 
+console.log(profileAPI);
+
+
 let followingStatus = {}; 
 function initializeFollowingStatus() {
   const storedFollowingUsers = JSON.parse(localStorage.getItem("followingUsers")) || {};
@@ -23,9 +26,10 @@ export async function createAuthorContainer(post) {
   avatarElement.src = post.author.avatar.url || "default-avatar.png";
   authorContainer.appendChild(avatarElement);
 
-  const authorName = document.createElement("span");
+  const authorName = document.createElement("a");
   authorName.classList.add("post-author-name");
   authorName.textContent = post.author.name;
+  authorName.href = `/profile/userprofile/?user=${post.author.name}`;
   authorContainer.appendChild(authorName);
 
   const followButton = document.createElement("button");
