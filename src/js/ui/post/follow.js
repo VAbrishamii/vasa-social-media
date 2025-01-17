@@ -29,7 +29,7 @@ export async function createAuthorContainer(post) {
   const authorName = document.createElement("a");
   authorName.classList.add("post-author-name");
   authorName.textContent = post.author.name;
-  authorName.href = `/profile/userprofile/?user=${post.author.name}`;
+  authorName.href = `/profile/postsbyprofile/?user=${post.author.name}`;
   authorContainer.appendChild(authorName);
 
   const followButton = document.createElement("button");

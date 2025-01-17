@@ -5,12 +5,14 @@ export default class ProfileAPI {
   apiBase = "";
   allprofile = "";
   updateprofile = "";
+  allpostsbyprofile = "";
 
 
   constructor(apiBase = API_BASE) {
     this.apiBase = apiBase;
     this.allprofile = `${this.apiBase}/social/profiles`;
     this.updateprofile = `${this.apiBase}/social/profiles/`;
+    this.allpostsbyprofile = `${this.apiBase}/social/profiles/<name>/posts`;
   }
 
   getUserName() {
@@ -192,8 +194,33 @@ export default class ProfileAPI {
       const profileDetails = await this.getProfileDetails(loggedInUser, { followers: true });
       const following = profileDetails.data.followers;
       return following;
-    }
+    },
+
+    allpostsbyprofile: async (username) => {
+      const params = this.createParams({
+        _author: true,
+        _comments: true,
+        _reactions: true,
+      });
+      const url = `${this.getPostsByUserURL(username)}?${params}`;
+      const response = await fetch(url, {
+        method: "GET",
+        headers: headers(),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Posts by profile:", data);
+        return data;
+      }
+
+      const errorData = await response.json();
+      const errorMessage = errorData.errors[0]?.message || "Could not fetch posts by profile";
+      throw new Error(errorMessage);
+    },
+  
 
   };
+
   
 }
