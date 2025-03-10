@@ -8,7 +8,9 @@ nav {
   
 }
 .logo {
-  width: 100px;
+  width: 50px;
+  border-radius: 50%;
+padding: 3px;
 }
 .logo img {
   width: 150%;
