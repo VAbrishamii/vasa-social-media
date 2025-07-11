@@ -24,8 +24,8 @@ export async function displayUserDetails() {
     const profileDetailsContainer = document.querySelector(".profile-details-container");
     profileDetailsContainer.innerHTML = `
     <div class="profile-header">
-    <h2>${profileUserName}</h2>
-    <p>${bio || "No bio available"}</p>
+    <h2 class="capitalize-first-only">${profileUserName}</h2>
+    <p>${bio || "Write your Bio"}</p>
     <div class="profile-stats">
       <div class="stat">
         <p>Followers</p>

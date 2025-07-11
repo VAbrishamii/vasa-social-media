@@ -1,7 +1,5 @@
-
 import { postAPI, profileAPI } from "../../api/instance";
 import { createPostHTML } from "../post/displayPost";
-
 
 export async function AllProfiles() {
   try {
@@ -21,7 +19,7 @@ export async function AllProfiles() {
       profileElement.innerHTML = `
             <div class="allprofile-header">
                 <img class="profile-avatar" src="${profile.avatar.url}" alt="${profile.name} avatar">
-                <h2 class="profile-username">${profile.name}</h2>
+                <h2 class="profile-username capitalize-first-only">${profile.name}</h2>
             </div>
         `;
 
@@ -32,33 +30,30 @@ export async function AllProfiles() {
   }
 }
 
-
 export async function displayPostsFromFollowing() {
   try {
-      const posts = await postAPI.post.getPostsFromFollowing();
-   
+    const posts = await postAPI.post.getPostsFromFollowing();
+
     const postContainer = document.querySelector(".userpost-container");
     postContainer.innerHTML = "";
 
-    for (const post of posts) { 
-     
-        const postElement = await createPostHTML(post);
+    for (const post of posts) {
+      const postElement = await createPostHTML(post);
 
-        postElement.setAttribute("data-author-id", post.id); 
-        postContainer.appendChild(postElement);
-       
-        const unfollowButton = postElement.querySelector(".unfollow-btn"); 
-        if (unfollowButton) {
-          unfollowButton.addEventListener("click", async () => {
-            try {
-              await profileAPI.profile.unfollow(post.id); 
-              removePostsByUser(post.data.author.id);
-            } catch (error) {
-              console.error("Error unfollowing user:", error.message);
-            }
-          });
-        }
-     
+      postElement.setAttribute("data-author-id", post.id);
+      postContainer.appendChild(postElement);
+
+      const unfollowButton = postElement.querySelector(".unfollow-btn");
+      if (unfollowButton) {
+        unfollowButton.addEventListener("click", async () => {
+          try {
+            await profileAPI.profile.unfollow(post.id);
+            removePostsByUser(post.data.author.id);
+          } catch (error) {
+            console.error("Error unfollowing user:", error.message);
+          }
+        });
+      }
     }
   } catch (error) {
     console.error("Error fetching posts from followed users:", error.message);
@@ -67,7 +62,9 @@ export async function displayPostsFromFollowing() {
 
 function removePostsByUser(authorId) {
   const postContainer = document.querySelector(".userpost-container");
-  const postsToRemove = postContainer.querySelectorAll(`[data-author-id='${authorId}']`);
-  
-  postsToRemove.forEach(post => post.remove());
+  const postsToRemove = postContainer.querySelectorAll(
+    `[data-author-id='${authorId}']`
+  );
+
+  postsToRemove.forEach((post) => post.remove());
 }

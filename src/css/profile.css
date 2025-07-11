@@ -11,20 +11,34 @@
 }
 .profile {
   position: relative;
-  display: inline-block;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
 }
 
 .user-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+ 
 }
 
 .user-name {
   margin-left: 10px;
   font-weight: bold;
+  font-size: 16px;
+
+
 }
 
+.capitalize-first-only {
+  text-transform: capitalize;
+}
+.capitalize-first-only::first-letter {
+  text-transform: uppercase;
+}
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -33,7 +47,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   list-style: none;
   padding: 10px;
- margin-top: 200px;
+  margin-top: 200px;
   border-radius: 8px;
   width: 150px;
   z-index: 1;
@@ -78,7 +92,6 @@
   margin-top: 10px;
 }
 
-
 .post-actions {
   position: absolute;
   right: 10px;
@@ -98,11 +111,8 @@
   flex-direction: column;
   gap: 10px;
   max-height: 100vh;
-  
-
 }
 .allprofile-header {
-
   align-items: center;
   margin-bottom: 20px;
   padding: 10px;
@@ -138,7 +148,6 @@
   width: 8px;
 }
 
-
 .allprofile-container::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 10px;
@@ -155,7 +164,6 @@
   gap: 20px;
   padding: 50px;
   margin: 0 auto;
- 
 }
 .update-profile-container {
   display: flex;

@@ -24,7 +24,7 @@ export function displayLoggedInUser() {
 
 
     const userNameElement = document.createElement("span");
-    userNameElement.classList.add("user-name");
+    userNameElement.classList.add("user-name", "capitalize-first-only");
     userNameElement.textContent = user.name;
 
     profileDiv.appendChild(userAvatarElement);

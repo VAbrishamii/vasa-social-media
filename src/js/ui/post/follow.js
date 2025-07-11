@@ -27,7 +27,7 @@ export async function createAuthorContainer(post) {
   authorContainer.appendChild(avatarElement);
 
   const authorName = document.createElement("a");
-  authorName.classList.add("post-author-name");
+  authorName.classList.add("post-author-name", "capitalize-first-only");
   authorName.textContent = post.author.name;
   authorName.href = `/profile/postsbyprofile/?user=${post.author.name}`;
   authorContainer.appendChild(authorName);
