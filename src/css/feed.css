@@ -9,9 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-
 
 .feed-container {
   display: grid;
@@ -19,6 +17,7 @@
   grid-gap: 10px;
   justify-content: center;
   padding: 20px;
+
 }
 
 .post-link {
@@ -152,4 +151,26 @@
 }
 .reacted {
   color: #e43c0e;
+}
+
+
+/* // responsive styles */
+
+
+@media (min-width: 640px) {
+  .feed-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .feed-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .feed-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
