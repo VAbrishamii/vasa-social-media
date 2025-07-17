@@ -28,15 +28,15 @@ export async function displayUserDetails() {
     <p>${bio || "Write your Bio"}</p>
     <div class="profile-stats">
       <div class="stat">
-        <p>Followers</p>
+        <p class="stat-label">Followers</p>
         <span class="stat-number">${followers.length}</span>
       </div>
       <div class="stat">
-        <p>Following</p>
+        <p class="stat-label">Following</p>
         <span class="stat-number">${following.length}</span>
       </div>
       <div class="stat">
-        <p>Posts</p>
+        <p class="stat-label">Posts</p>
         <span class="stat-number">${posts.length}</span>
       </div>
     </div>
